@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>signup - lazimisha</title>
+
+<!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  
+  <link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+ 
+<script type="text/javascript" th:src="@{/js/confirm/confirm.js}"></script>
+<script type="text/javascript" th:src="@{/js/ajaxLoader/ajaxLoader.js}"></script>
+
+
+<link rel="stylesheet" type="text/css"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+<link rel="stylesheet" type="text/css" th:href="@{/css/ajaxLoader.css}"/>
+<link rel="stylesheet" type="text/css" th:href="@{/css/sticky.css}"/>
+
+
+</head>
+
+<body style="background-color: #ededed;" class="navrbar" id="sticky">
+	
+<nav class="navbar-fixed-top navbar-default" id="">
+<div class="container-fluid">
+  <div class="navbar-header">
+    <a class="navbar-brand" href="#">lazimisha</a>
+  </div>
+  <div>
+    <ul class="nav navbar-nav navbar-right">
+      <li class="active"><a href="#intro">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</div>
+
+   <div class="progress" hidden="">
+      <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+<!--         <span>Please wait<span class="dotdotdot"></span></span>
+ -->   
+       <img th:src="@{/images/ajax-loader.gif}"/>
+ 
+      </div>
+    </div>
+
+</nav><!-- /.navbar -->
+
+	
+	<div style="background-color: teal; height: 50px;">
+	
+		<div class="modal hide" id="pleaseWaitDialog" data-backdrop="static" data-keyboard="false">
+	    <div class="modal-header">
+	        <h1>Please Wait</h1>
+	    </div>
+	    <div class="modal-body">
+	        <div id="ajax_loader">
+	        
+	        </div>
+	    </div>
+	    
+	</div>
+
+ 
+	
+	</div>
+
+
+	
+	<div class="container-fluid" style="margin-top: 30px;">
+
+		<div class="row col-lg-4 col-lg-offset-4" style="margin-top: 40px; background-color: #fff; padding: 20px; border: solid 1px #ddd;">
+			<form >
+				<h3 class="form-signin-heading">confirm sign up</h3>
+
+				<div class="form-group">
+					<div class="">
+						<input type="email" id="emailFld"  placeholder="email" class="form-control" required="required" />
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<div class="">
+						<input type="password" id="passwordFld" placeholder="password" class="form-control" required="required" />
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<div class="">
+						<input type="number"  id="codeNumberFld" placeholder="code number" class="form-control" required="required"/>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					
+					<div class="">
+					
+						<input type="button" class="btn btn-primary btn-block" onclick="postEmailForValidification()"  value="confirm"/>
+			
+					</div>
+				</div>
+			
+			</form>
+			
+			<br />
+			<button class="btn btn-primary btn-success btn-block" onclick="goToLogin()">login</button>
+
+			<script type="text/javascript">
+				function goToLogin() {
+
+					window.location.pathname = "/login";
+
+				}
+			</script>
+
+			<br />
+			<button class="btn btn-primary btn-success btn-block" onclick="goToSignup()">sign up</button>
+
+			<script type="text/javascript">
+				function goToSignup() {
+
+					window.location.pathname = "/register";
+
+				}
+			</script>
+
+
+
+
+<!-- 
+			<div id='ajax_loader'
+				style="position: fixed; left: 50%; top: 50%; display: none;">
+				<img src="/images/ajax-loader2.gif"></img>
+				<img src="https://www.drupal.org/files/issues/ajax-loader.gif"></img>
+				 <img th:src="@{/images/ajax-loader2.gif}"/> 
+			</div>
+			 -->
+			<button id="btnStart" type="button">Start</button>
+			<button id="btnStop" type="button">Stop</button>
+
+		<script type="text/javascript">
+			
+			$(document).ajaxStop(function(){
+	            $("#ajax_loader").hide();
+	         });
+	         $(document).ajaxStart(function(){
+	             $("#ajax_loader").show();
+	         }); 
+	        $('#btnStart').click(function(e)  {
+	        	$('#pleaseWaitDialog').modal();
+	        	/* $('.progress').show(); */
+	            /* jQuery.event.trigger("ajaxStart"); */
+	            e.preventDefault();
+	        });
+	        $('#btnStop').click(function(e)  {
+	        	$('#pleaseWaitDialog').modal('hide');
+	        	jQuery.event.trigger("ajaxStop");
+	            e.preventDefault();
+	        });
+
+		</script>
+
+        
+
+
+		</div>
+	</div>
+
+
+
+<!-- end snippet -->
+
+</body>
+</html>

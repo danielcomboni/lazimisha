@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>lazimisha - welcome</title>
+
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript" th:src="@{/js/comingSoon/comingSoon.js}"></script>
+<!--     <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/> -->
+
+
+<style>
+body, html {
+	background-color: teal;
+	height: 100%;
+	margin: 0;
+	height: 100%;
+}
+
+.bgimg {
+	/* background-image: url('/images/comingSoon.jpg'); */
+	height: 100%;
+	background-position: center;
+	background-size: cover;
+	position: relative;
+	color: white;
+	font-family: "Courier New", Courier, monospace;
+	font-size: 25px;
+	margin-top: 10px;
+}
+
+.topleft {
+	position: absolute;
+	top: 0;
+	left: 16px;
+}
+
+.bottomleft {
+	position: absolute;
+	bottom: 0;
+	left: 16px;
+}
+
+.middle {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	text-align: center;
+}
+
+hr {
+	margin: auto;
+	width: 40%;
+}
+
+/* ellipsis*/
+
+.loading {
+  font-size: 30px;
+}
+
+.loading {
+  font-size: 30px;
+}
+
+.loading:after {
+  overflow: hidden;
+  display: inline-block;
+  vertical-align: bottom;
+  -webkit-animation: ellipsis steps(4,end) 900ms infinite;      
+  animation: ellipsis steps(4,end) 900ms infinite;
+  content: "\2026"; /* ascii code for the ellipsis character */
+  width: 0px;
+}
+
+@keyframes ellipsis {
+  to {
+    width: 1.25em;    
+  }
+}
+
+@-webkit-keyframes ellipsis {
+  to {
+    width: 1.25em;    
+  }
+}
+</style>
+ 
+
+
+
+
+</head>
+
+<body>
+
+	<div class="bgimg">
+		<div class="topleft">
+			<img src="../static/images/comingSoon.jpg" width="100"
+				th:src="@{images/comingSoon.jpg}" />
+
+			<!-- <img src="../static/images/pirate.jpg" width="1000" th:src="@{images/pirate.jpg}"/>
+ -->
+			<p></p>
+
+<!-- 			<div class="loading">Loading</div>
+ -->
+
+		</div>
+		<div class="middle">
+			<h1 class="loading">COMING SOON</h1>
+			
+			<hr/>
+			
+			<p style="color: black;"><i>some days left...so watch out for it!!!</i></p>
+
+			<div>
+			<a class="form-contro btn btn-primary" onclick="goToLogin()">login (admin only)</a>
+				<!-- <a class="form-contro btn btn-primary" onclick="window.location.href='login.html'">login (admin only)</a> -->
+				<!-- <button onClick="window.location.href='/secure/edit.aspx?id=671'">Edit</button> -->
+			</div>
+
+			<div>
+				<a href="/register" class="form-contro btn btn-primary">signup</a>
+			</div>
+
+
+		</div>
+		<div class="bottomleft">
+			<p></p>
+		</div>
+
+		<div></div>
+
+	</div>
+
+</body>
+</html>

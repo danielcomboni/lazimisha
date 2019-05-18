@@ -1,8 +1,6 @@
 package com.lazimisha.service.signup;
 
 import java.math.BigDecimal;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,21 +38,6 @@ public class SignupServiceImpl implements SignupService {
 		signupRepository.flush();
 
 		return signup.getId();
-	}
-
-	public static void main(String[] args) {
-		// Date date = new Date();
-		// System.out.println(date);
-		String timeStamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Calendar.getInstance().getTime());
-
-		System.out.println();
-
-		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		Date date = new Date(System.currentTimeMillis());
-		System.out.println(formatter.format(date));
-
-		// java.sql.Date d2 =
-
 	}
 
 }

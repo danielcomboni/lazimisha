@@ -13,7 +13,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.Gson;
 import com.lazimisha.controller.message.Message;
-import com.lazimisha.controller.signup.SignupController;
 import com.lazimisha.entity.signup.Signup;
 import com.lazimisha.model.User;
 import com.lazimisha.service.confirmation.ConfirmationManipulation;
@@ -22,9 +21,6 @@ import com.lazimisha.service.confirmation.ConfirmationService;
 @Controller
 @RequestMapping("/confirmation")
 public class ConfirmationController {
-
-	// @Autowired
-	// private BCryptPasswordEncoder encoder;
 
 	@Autowired
 	private ConfirmationManipulation confirmationManipulation;
@@ -47,12 +43,6 @@ public class ConfirmationController {
 
 		confirmationManipulation.setSignupPassed(signup);
 
-		// System.out.println("signup: " + signup);
-
-		// List<Signup> list = new ArrayList<>();
-		// list.add(signup);
-		// confirmationJsonList.setSignups(list);
-
 		return "/confirmation/checkEmail";
 
 	}
@@ -60,8 +50,6 @@ public class ConfirmationController {
 	@RequestMapping(value = { "/checkEmailResult" }, method = RequestMethod.GET)
 	@ResponseBody
 	public String checkEmailResult() {
-
-		// System.out.println("inside result");
 
 		String email = confirmationManipulation.getSignupPassed().getEmail();
 
@@ -108,8 +96,6 @@ public class ConfirmationController {
 				confirmationManipulation.getSignupPassed().getPassword(),
 				confirmationManipulation.getUserFromDatabase());
 
-		// System.out.println("matched: " + matched);
-
 		Message msg = new Message();
 		if (matched) {
 			msg.setMessage("password matched");
@@ -134,11 +120,6 @@ public class ConfirmationController {
 		if (String.valueOf(randomNumberOriginal).equalsIgnoreCase(String.valueOf(randomNumberPassed.intValue()))) {
 
 			msg.setMessage("number matched");
-//			SignupController controller = new SignupController();
-//
-//			confirmationManipulation.getSignupPassed()
-//					.setUserId(confirmationManipulation.getUserFromDatabase().getId());
-//			controller.confirmSignup(confirmationManipulation.getSignupPassed());
 
 		} else {
 			msg.setMessage("number not matched");
@@ -147,10 +128,5 @@ public class ConfirmationController {
 		return new Gson().toJson(msg);
 
 	}
-
-	// public static void main(String[] args) {
-	// System.out.println(BCrypt.checkpw("12345",
-	// "$2a$10$8HO16ce8sEcNZu1b1Ri8nuOcrg/vc6FGdx15fhZ4yzS1acbYXBwMu"));
-	// }
 
 }

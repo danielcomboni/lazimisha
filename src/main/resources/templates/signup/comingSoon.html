@@ -5,7 +5,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>lazimisha - welcome</title>
+<title>lazimisha</title>
 
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -15,6 +15,8 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <script type="text/javascript" th:src="@{/js/comingSoon/comingSoon.js}"></script>
+    
+    
 <!--     <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/> -->
 
 
@@ -106,35 +108,17 @@ hr {
 
 	<div class="bgimg">
 		<div class="topleft">
-			<img src="../static/images/comingSoon.jpg" width="100"
-				th:src="@{images/comingSoon.jpg}" />
-
-			<!-- <img src="../static/images/pirate.jpg" width="1000" th:src="@{images/pirate.jpg}"/>
- -->
-			<p></p>
-
-<!-- 			<div class="loading">Loading</div>
- -->
-
+			<img src="../static/images/comingSoon.jpg" width="30" height="40" th:src="@{images/favicon.png}" />
 		</div>
+		
 		<div class="middle">
 			<h1 class="loading">COMING SOON</h1>
-			
 			<hr/>
-			
-			<p style="color: black;"><i>some days left...so watch out for it!!!</i></p>
-
+			<p style="color: black;"><i>on its way...</i></p>
+				<a th:href="@{/toLogin}" class="form-control btn btn-primary">login</a>
 			<div>
-			<a class="form-contro btn btn-primary" onclick="goToLogin()">login (admin only)</a>
-				<!-- <a class="form-contro btn btn-primary" onclick="window.location.href='login.html'">login (admin only)</a> -->
-				<!-- <button onClick="window.location.href='/secure/edit.aspx?id=671'">Edit</button> -->
+				<a href="@{/toSignup}" class="form-control btn btn-primary disabled">sign up</a>
 			</div>
-
-			<div>
-				<a href="/register" class="form-contro btn btn-primary">signup</a>
-			</div>
-
-
 		</div>
 		<div class="bottomleft">
 			<p></p>

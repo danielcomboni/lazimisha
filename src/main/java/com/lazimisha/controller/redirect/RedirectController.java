@@ -28,4 +28,15 @@ public class RedirectController {
 		return "redirect:/register";
 	}
 
+	/**
+	 * redirects to register or sign up
+	 * 
+	 * 
+	 * @return /register
+	 */
+	@GetMapping("/toSignupConfirmation")
+	public String toSignupConfirmation() {
+		return "redirect:/confirmation";
+	}
+
 }

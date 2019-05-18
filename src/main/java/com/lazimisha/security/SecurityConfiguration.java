@@ -1,9 +1,9 @@
 package com.lazimisha.security;
+
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -19,7 +19,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 	@Autowired
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
-	
+
 	@Autowired
 	private CustomLoginSuccessHandler sucessHandler;
 
@@ -41,49 +41,35 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 
-	
-		
-		
-		
-				// URLs matching for access rights
-		
-		
-//				.requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
-		
-//				.antMatchers("/resources/**","/**/*.css","/**/*.js","/js/**","/*.js","/css/**").fullyAuthenticated()
+		// URLs matching for access rights
 
-				http.authorizeRequests()
-			
-				.antMatchers("/resources/**","/**/*.css","/**/*.js","/js/**","/*.js","/css/**", "/webjars/**").permitAll()
-				
-				.antMatchers("/").permitAll()
-				.antMatchers("/login").permitAll()
-				.antMatchers("/register").permitAll()
-				.antMatchers("/api/confirmation*").permitAll()
-				.antMatchers("/home/**").hasAnyAuthority("SUPER_USER", "ADMIN_USER", "SITE_USER")
-				.antMatchers("/admin/**").hasAnyAuthority("SUPER_USER","ADMIN_USER")
-				.anyRequest().authenticated()
-				.and()
+		// .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
+
+		// .antMatchers("/resources/**","/**/*.css","/**/*.js","/js/**","/*.js","/css/**").fullyAuthenticated()
+
+		http.authorizeRequests()
+
+				.antMatchers("/resources/**", "/**/*.css", "/**/*.js", "/js/**", "/*.js", "/css/**", "/webjars/**")
+				.permitAll()
+
+				.antMatchers("/").permitAll().antMatchers("/login").permitAll().antMatchers("/register").permitAll()
+				.antMatchers("/api/confirmation*").permitAll().antMatchers("/home/**")
+				.hasAnyAuthority("SUPER_USER", "ADMIN_USER", "SITE_USER").antMatchers("/admin/**")
+				.hasAnyAuthority("SUPER_USER", "ADMIN_USER").anyRequest().authenticated().and()
 				// form login
-				.csrf().disable().formLogin()
-				.loginPage("/login")
-				.failureUrl("/login?error=true")
-				.successHandler(sucessHandler)
-				.usernameParameter("email")
-				.passwordParameter("password")
-				.and()
+				.csrf().disable().formLogin().loginPage("/login").failureUrl("/login?error=true")
+				.successHandler(sucessHandler).usernameParameter("email").passwordParameter("password").and()
 				// logout
-				.logout()
-				.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-				.logoutSuccessUrl("/").and()
-				.exceptionHandling()
-				.accessDeniedPage("/access-denied");
+				.logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/").and()
+				.exceptionHandling().accessDeniedPage("/access-denied");
 	}
 
 	/**
-	 * adding anyRequest() allowed it to access javascript (probably resources at large)
+	 * adding anyRequest() allowed it to access javascript (probably resources at
+	 * large)
 	 * 
-	 * but it probably allows all other things to be access as well which in turn is not good practice security wise
+	 * but it probably allows all other things to be access as well which in turn is
+	 * not good practice security wise
 	 * 
 	 */
 	@Override

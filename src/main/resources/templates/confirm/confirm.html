@@ -79,8 +79,9 @@
 	<div class="container-fluid" style="margin-top: 30px;">
 
 		<div class="row col-lg-4 col-lg-offset-4" style="margin-top: 40px; background-color: #fff; padding: 20px; border: solid 1px #ddd;">
+			
 			<form >
-				<h3 class="form-signin-heading">confirm sign up</h3>
+				<h3 class="">confirm sign up</h3>
 
 				<div class="form-group">
 					<div class="">
@@ -104,7 +105,7 @@
 					
 					<div class="">
 					
-						<input type="button" class="btn btn-primary btn-block" onclick="postEmailForValidification()"  value="confirm"/>
+						<input type="submit" class="btn btn-primary btn-block disabled" onclick="postEmailForValidification()"  value="confirm"/>
 			
 					</div>
 				</div>
@@ -112,72 +113,13 @@
 			</form>
 			
 			<br />
-			<button class="btn btn-primary btn-success btn-block" onclick="goToLogin()">login</button>
-
-			<script type="text/javascript">
-				function goToLogin() {
-
-					window.location.pathname = "/login";
-
-				}
-			</script>
+			<a th:href="@{/toLogin}" class="form-control btn btn-primary btn-success btn-block">login</a>        
 
 			<br />
-			<button class="btn btn-primary btn-success btn-block" onclick="goToSignup()">sign up</button>
-
-			<script type="text/javascript">
-				function goToSignup() {
-
-					window.location.pathname = "/register";
-
-				}
-			</script>
-
-
-
-
-<!-- 
-			<div id='ajax_loader'
-				style="position: fixed; left: 50%; top: 50%; display: none;">
-				<img src="/images/ajax-loader2.gif"></img>
-				<img src="https://www.drupal.org/files/issues/ajax-loader.gif"></img>
-				 <img th:src="@{/images/ajax-loader2.gif}"/> 
-			</div>
-			 -->
-			<button id="btnStart" type="button">Start</button>
-			<button id="btnStop" type="button">Stop</button>
-
-		<script type="text/javascript">
-			
-			$(document).ajaxStop(function(){
-	            $("#ajax_loader").hide();
-	         });
-	         $(document).ajaxStart(function(){
-	             $("#ajax_loader").show();
-	         }); 
-	        $('#btnStart').click(function(e)  {
-	        	$('#pleaseWaitDialog').modal();
-	        	/* $('.progress').show(); */
-	            /* jQuery.event.trigger("ajaxStart"); */
-	            e.preventDefault();
-	        });
-	        $('#btnStop').click(function(e)  {
-	        	$('#pleaseWaitDialog').modal('hide');
-	        	jQuery.event.trigger("ajaxStop");
-	            e.preventDefault();
-	        });
-
-		</script>
-
-        
-
+			<a th:href="@{/toSignup}" class="form-control btn btn-primary btn-success btn-block disabled">sign up</a>        
 
 		</div>
 	</div>
-
-
-
-<!-- end snippet -->
 
 </body>
 </html>
